@@ -336,6 +336,19 @@ if {{$errName | $a.SpecifiedPlaceholder 1}} != nil {
 {{end}}`,
 },
 	{
+		label:   "wrap",
+		details: "wrap error with text message",
+		body: `{{if (eq (.TypeName .Type) "error") -}}
+errors.Wrap({{.X}}, "{{ .Cursor }}")
+{{- end}}`,
+	}, {
+		label:   "wrapf",
+		details: "wrap error with formatted text message",
+		body: `{{if (eq (.TypeName .Type) "error") -}}
+errors.Wrapf({{.X}}, "{{ .Cursor }}")
+{{- end}}`,
+	},
+	{
 		label:   "tostring",
 		details: "[]byte to string",
 		body: `{{if (eq (.TypeName .Type) "[]byte") -}}
